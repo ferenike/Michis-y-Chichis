@@ -105,6 +105,8 @@ py solution\predict.py
 
 Este repo es basado en:
 [Build a Machine Learning Model using Azure Custom Vision](https://github.com/microsoft/workshop-library/tree/main/full/ml-model-custom-vision)
+   
 [Quickstart: Create an image classification project with the Custom Vision client library or REST API](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/quickstarts/image-classification?tabs=visual-studio&pivots=programming-language-python)
-https://docs.microsoft.com/es-mx/learn/modules/classify-images-custom-vision/2-azure-image-classification
+   
+[Introducción a la clasificación de imágenes en Azure](https://docs.microsoft.com/es-mx/learn/modules/classify-images-custom-vision/2-azure-image-classification)
 
