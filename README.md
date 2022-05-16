@@ -111,3 +111,12 @@ Este repo es basado en:
    
 [Introducción a la clasificación de imágenes en Azure](https://docs.microsoft.com/es-mx/learn/modules/classify-images-custom-vision/2-azure-image-classification)
 
+## Posibles errores
+
+```
+Get-ExecutionPolicy
+```
+```
+Set-ExecutionPolicy Unrestricted
+```
+
