@@ -86,7 +86,7 @@ python-dotenv
 azure-cognitiveservices-vision-customvision
 ```
 10. Abre una nueva terminal en Visual Studio Code
-11. Crea un entorno virtual llamado venv con:
+11. Crea un entorno virtual llamado venv para asegurarte de que el programa tendrá acceso a las versiones y recursos correctos para ejecutarse correctamente con:
 ```
 py -m venv venv
 ```
