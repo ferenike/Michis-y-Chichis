@@ -12,9 +12,19 @@ Build a Machine Learning Model using Azure Custom Vision
 1. Ve a [Michis y chichis](https://github.com/ferenike/Michis-y-Chichis)
 2. Da click en Code y copia el URL del repo.
 ![image](https://user-images.githubusercontent.com/45903954/168409069-2ed5d3a6-9f48-4641-bd97-ad11be40b43e.png)
-3. Abre Git Bash y usa el comando 
-4. Para ir a la carpeta que creamos usa:
-5. Inicia Visual Studio Code escribiendo
+3. Abre Git Bash y usa el comando
+    ```
+    git clone <URL> MiChi
+    ```
+    donde en lugar de URL, pegarás el que cabas de copiar con shift+insert.
+4. Dirígete a la carpeta que creamos para la copia del repo con:
+    ```
+    cd MiChi
+    ```
+5. Inicia Visual Studio Code escribiendo:
+    ```
+    code .
+    ```
 ## Crea el recurso :raised_hands:
 1. Inicia sesión en el [Portal de Azure](https://portal.azure.com/)
 2. Selecciona ***Crear un recurso nuevo***
@@ -50,6 +60,48 @@ Para determinar el directorio actual, escriba pwd en la línea de comandos $.)
 9. Espera a que termine 
 
 ## Prueba y usa el modelo :tada:
+### Prueba el modelo desde el navegador:
+1. con ***Quick Test***
+2. Selecciona ***Browse local files***
+3. Elige una imagen de la carpeta ***testing-images***
+4. Checa los resultados :)
+### Para usar el modelo fuera del navegador:
+1. En el menú ***Performance***, da click en ***Publish***
+2. En nombre del modelo: michischichis (guarda este dato)
+3. En Prediction resource selecciona la creada anteriormente
+4. Da click en ***Publish***
+5. Selecciona ***Prediction URL*** y copiaremos ***endpoint address*** y ***Prediction-Key***
+6. Ve al engranaje y obtén el ***Project Id***
+7. Recolecta lo anterior en un archivo .env dentro de Visual Studio Code:
+    ```
+   ENDPOINT=<YOUR_ENDPOINT>
+   KEY=<YOUR_PREDICTION_KEY>
+   PROJECT_ID=<YOUR_PROJECT_ID>
+   PUBLISHED_ITERATION_NAME=michischichis
+    ```
+8. Y guarda el archivo
+9. Instala los paquetes ***python_dotenv*** que permite establecer variables de entorno con un archivo de texto y la ***Custom Vision client library (or SDK)*** para hacer predcicones creando un archivo requirements.txt 
+```
+python-dotenv
+azure-cognitiveservices-vision-customvision
+```
+10. Abre una nueva terminal en Visual Studio Code
+11. Crea un entorno virtual llamado venv con:
+```
+py -m venv venv
+```
+12. Activa el entorno con:
+```
+.\venv\Scripts\activate
+```
+13. E instala los paquetes    
+```
+pip install -r solution\requirements.txt
+```
+14. Finalmente, corremos el programa:
+```
+py solution\predict.py
+```
 
 Este repo es basado en:
 [Build a Machine Learning Model using Azure Custom Vision](https://github.com/microsoft/workshop-library/tree/main/full/ml-model-custom-vision)
