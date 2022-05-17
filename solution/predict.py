@@ -1,13 +1,16 @@
-# Predition client
+# Intalamos las lbrerías necesarias 
+# Predition client (El SDK para hacer predicciones)
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-# Key class for azure
+# Key class for azure (Para las credenciales)
 from msrest.authentication import ApiKeyCredentials
-# dotenv to load key
+# Para obtener las variables de entorno creadas en el archivo .env
 from dotenv import load_dotenv
-# Import os to read environment variables
+# Importamos os para leer las variables de entorno
 import os
 
-# Load the key and endpoint values
+# Obtenemos las variables 
+
+# Cargar las claves y el endpoint 
 load_dotenv()
 
 # Set the values into variables
@@ -16,18 +19,21 @@ endpoint = os.getenv('ENDPOINT')
 project_id = os.getenv('PROJECT_ID')
 published_name = os.getenv('PUBLISHED_ITERATION_NAME')
 
-# Setup credentials for client
+# ¡Hagamos la predicción!
+
+# Configuramos las claves para poder usar el servicio
 credentials = ApiKeyCredentials(in_headers={'Prediction-key':key})
 
-# Create client, which will be used to make predictions
+# Creamos el "cliente" con el cual haremos la "llamada" al servicio y necesita saber
+# a dónde (URL) y requiere de la credencial para poder accesar (key)
 client = CustomVisionPredictionClient(endpoint, credentials)
 
-# Open the test file
+# Abrirá la imagen de prueba en un formato binario r=read y b=binary 
 with open('testing-images\Pug-t1.png', 'rb') as image:
-    # Perform the prediction
+    # Obtenemos los resultados de la predicción (Clasificación). Necesita del ID, nombre de la iteración publicada y la imagen
     results = client.classify_image(project_id, published_name, image.read())
 
-    # Because there could be multiple predictions, we loop through each one
+    # Debido a que podrían existir varias categorías, las desplegamos todas con el for
     for prediction in results.predictions:
-        # Display the name of the breed, and the probability percentage
+        # Finalmente, imprime la etiqueta y la probabilidad en portcentaje de la misma forma que el portal
         print(f'{prediction.tag_name}: {(prediction.probability):.2%}')
